@@ -1,0 +1,48 @@
+// falsy한 값: 조건식에서 거짓으로 평가됨
+// undifined, null, 0n(BigInt), 0, -0, Nan, ""(빈문자열),백틱(``)
+// !연산자를 붙이면 참이 되어 if문 실행
+// falsy한 값 제외: truthy 한 값
+// 문자열은 ""를 제외하고 그 자체로 thruthy한 값
+
+
+// undefined, null => 값이 있는지 확인
+let varA;  //undefined
+
+if(varA){
+    console.log("값이 있음");
+} else{
+    console.log("값이 없음");
+}
+
+// 단락 평가(지름길 평가)
+// :논리연산에서 첫 번째 피연산자의 값만으로 해당 식의 결과가 확실할 때, 두번째 값은 평가하지 않는 것
+
+
+// AND(&&) 단락평가 :하나라고 거짓이면 거짓 반환
+function calcA(){
+    console.log("a");
+    return false;
+}
+
+function calcB(){   // 호출되지 않음
+    console.log("b");
+    return true;
+}
+
+console.log(calcA()&&calcB());
+
+// 오류예방 > turthy & falsy -> 해당 값 그대로 반환
+/* function getName(person){
+    return person && person.name;
+}
+
+let person={name:"이정환"};
+let name1=getName(undifined);
+
+let name2=getName(null);
+let name3=getName(person); */
+
+
+//OR(||) 단락평가: 하나라도 참이면 참 반환
+
+
