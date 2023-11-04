@@ -1,11 +1,28 @@
 // import React from "react";
-import "./Body.css";
+//import "./Body.css";
+import {useRef, useState} from "react";
 
-function Body({children}) {
-    console.log(children);
+function Body() {
+    const [text, setText] = useState("");
+    const textRef = useRef();
+
+    const hadleOnChange = (e) => {
+        setText(e.target.value);
+    };
+
+    const hadleOnClick = () => {
+        if(text.length <  5){
+            textRef.current.focus();
+        } else {
+            alert(text);
+            setText("");
+        }
+    };
+
     return (
-        <div className="body">
-            {children} 
+        <div>  
+            <input ref={textRef} value={text} onChange={hadleOnChange} />
+            <button onClick={hadleOnClick}>작성 완료</button>
         </div>
     );
 }
@@ -28,5 +45,15 @@ function Body({name, location, favorList}) {
 Body.defaultProps = {
     favorList: [],
 };
+
+
+function Body({children}) {
+    console.log(children);
+    return (
+        <div className="body">
+            {children} 
+        </div>
+    );
+}
 
 */
